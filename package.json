@@ -1,0 +1,35 @@
+{
+  "name": "youtube_curator_squad",
+  "version": "1.0.0",
+  "description": "Allows user to search YouTube for videos on a topic, bookmark their favorite videos, tag videos based on the topic, search teh local databases based on the tags, and more!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "db:create": "createdb album_review",
+    "db:destroy": "dropdb album_review",
+    "db:init": "psql -f schema.sql album_review",
+    "db:seed": "psql -f seed.sql album_review",
+    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init && npm run db:seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-manack/youtube_curator_squad.git"
+  },
+  "keywords": [],
+  "author": "P. Collins, K. Garcia, S. MacEachern, J. Manack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/john-manack/youtube_curator_squad/issues"
+  },
+  "homepage": "https://github.com/john-manack/youtube_curator_squad#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-es6-template-engine": "^2.2.3",
+    "express-session": "^1.17.1",
+    "pg-promise": "^10.9.2",
+    "slugify": "^1.4.6"
+  }
+}
