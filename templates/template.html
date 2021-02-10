@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-    ${body}
+    <nav class="navbar main-nav  is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-start">
+            <a class="navbar-item" href='/'>Home</a>
+            ${!!is_logged_in ? `
+                <a class="navbar-item" href='/users/logout'>Logout</a>
+                ` : `
+                <a class="navbar-item" href='/users/signup'>Register</a>
+                <a class="navbar-item" href='/users/login'>Login</a>
+                `
+            }
+        </div>
+    </nav>
+    <h1 class="container">${title}</h1>
+    <main class="container">${body}</main>
 </body>
 </html>
