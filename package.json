@@ -1,17 +1,12 @@
 {
-  "nae": "youtube_curator_squad",
+  "name": "youtube_curator_squad",
   "version": "1.0.0",
   "description": "Allows user to search YouTube for videos on a topic, bookmark their favorite videos, tag videos based on the topic, search teh local databases based on the tags, and more!",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "db:create": "createdb album_review",
-    "db:destroy": "dropdb album_review",
-    "db:init": "psql -f schema.sql album_review",
-    "db:seed": "psql -f seed.sql album_review",
-    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init && npm run db:seed"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
