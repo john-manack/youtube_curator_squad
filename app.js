@@ -37,3 +37,4 @@ const usersController = require('./routes/users');
 app.use('/', rootController);
 app.use('/videos', videosController);
 app.use('/users', usersController);
+
