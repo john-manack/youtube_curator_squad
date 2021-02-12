@@ -1,6 +1,16 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
-
+    <div videoplayer-container>
+      <div id="player"></div>
+        <form action="/videos/add" method="POST">
+          <input type="hidden" name="videoId" value="${videoId}">
+          <input type="hidden" name="user_id" value="${user_id}">
+          ${!!is_logged_in ? `
+            <button type="submit" class="button is-primary">Add to Favorites</button>
+            ` : `
+          `}
+        </form>
+    </div>
+      
     <script>
       const vidId = '${videoId}';
       console.log(vidId);
@@ -25,10 +35,11 @@
           }
         });
       }
+      
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
-        event.target.playVideo();
+        event.target.stopVideo();
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -37,7 +48,6 @@
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
           done = true;
         }
       }

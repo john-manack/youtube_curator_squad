@@ -2,7 +2,9 @@
 
 const express = require('express'),
     router = express.Router(),
-    fetch = require('node-fetch');
+    fetch = require('node-fetch'),
+    users = require('../models/users'),
+    favoritesModel = require('../models/favorites');
 
 router.get('/q=:query', async (req, res) => {
     const { query } = req.params; 
@@ -37,11 +39,27 @@ router.get('/watch/:videoId', (req, res) => {
             title: 'Watch video',
             videoId,
             is_logged_in: req.session.is_logged_in,
+            user_id: req.session.user_id,
         },
         partials: {
             body: 'partials/videoplayer',
         }
     });
+});
+
+router.post('/add', async (req, res) => {
+    const { videoId, user_id } = req.body;
+    console.log('adding favorite video', videoId);
+    console.log('user id is', user_id);
+    const Favorite = new favoritesModel(null, videoId, user_id);
+    const response = await Favorite.addFavorites();
+    console.log(response); 
+    if (response.rowCount >= 1) {
+        res.redirect('back');
+    }
+    else {
+        res.sendStatus(500);
+    };
 });
 
 module.exports = router;
