@@ -9,6 +9,8 @@ router.get('/', (req, res) => {
         locals: {
             title: 'squadTube',
             is_logged_in: req.session.is_logged_in,
+            first_name: req.session.first_name,
+            last_name: req.session.last_name
         },
         partials: {
             body: 'partials/home'
