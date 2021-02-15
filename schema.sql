@@ -12,10 +12,14 @@ CREATE TABLE favorite_videos (
     user_reference integer REFERENCES user_info (id)
 );
 
-CREATE TABLE tags (
+CREATE TABLE tag_key (
     id serial PRIMARY KEY,
-    tag_body text,
+    tag_name varchar(2000)
+);
+
+CREATE TABLE user_tags (
+    id serial PRIMARY KEY,
+    tag_key_reference integer REFERENCES tag_key(id),
     video_reference varchar(2000),
     user_reference integer REFERENCES user_info (id)
 );
-
