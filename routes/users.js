@@ -3,14 +3,16 @@
 const express = require('express'),
     router = express.Router(),
     bcrypt = require('bcryptjs'),
-    users = require('../models/users');
+    users = require('../models/usersModel');
 
+// Get signup page
 router.get('/signup', (req, res) => {
-
     res.render('template', {
         locals: {
-            title: 'Sign-up NOW!!!',
+            title: 'Register for squadTube',
             is_logged_in: req.session.is_logged_in,
+            first_name: req.session.first_name,
+            last_name: req.session.last_name
         },
         partials: {
             body: 'partials/signup'
@@ -18,11 +20,14 @@ router.get('/signup', (req, res) => {
     });
 });
 
+// Get login page
 router.get('/login', (req, res) => {
     res.render('template', {
         locals: {
             title: 'User Log In',
             is_logged_in: req.session.is_logged_in,
+            first_name: req.session.first_name,
+            last_name: req.session.last_name
         },
         partials: {
             body: 'partials/login',
@@ -30,11 +35,13 @@ router.get('/login', (req, res) => {
     });
 });
 
+// Get logout action to end user session
 router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 })
 
+// Post a new user to the database with password encryption
 router.post('/signup', async (req, res) => {
     const { first_name, last_name, email, password } = req.body;
 
@@ -55,6 +62,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// Post a new user session to express sessions.
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = new users(null, null, null, email, password);
