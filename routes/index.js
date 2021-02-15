@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 
     res.render('template', {
         locals: {
-            title: 'squadTube',
+            title: '',
             is_logged_in: req.session.is_logged_in,
             first_name: req.session.first_name,
             last_name: req.session.last_name
