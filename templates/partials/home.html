@@ -5,6 +5,16 @@
                 <input class="input" type="text" name="search_input" placeholder="Enter Search">
         </label>
     </div>
+    <button type="submit" class="button">Search</button>
+</form>
 
+<form action="/videos/searchtag" method="POST" class="form-container">
+    <div class="control">
+        <select name="tag_name">
+            ${tagKeyData.rows.map(tag => { return `
+                <option value="${tag.tag_name}">${tag.tag_name}</option>
+            `})}
+        </select>
+    </div>
     <button type="submit" class="button">Search</button>
 </form>
