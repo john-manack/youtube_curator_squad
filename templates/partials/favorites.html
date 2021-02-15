@@ -1,9 +1,11 @@
 <ul>
-    ${object.map(data =>
-        `<li>
-            <a href="./watch/${data.video_reference}">
-                <img src="https://i.ytimg.com/vi/${data.video_reference}/default.jpg" alt="video thumbnail">
-                <hr/>
-            </a>
-        </li>`).join('')}
+    <div class="favorites-container">
+        ${object.map(data =>
+            `<li>
+                <a href="./watch/${data.video_reference}">
+                    <img  class="favorites-img" src="https://i.ytimg.com/vi/${data.video_reference}/default.jpg" alt="video thumbnail">
+                    <hr/>
+                </a>
+            </li>`).join('')}
+    </div>
 </ul>
