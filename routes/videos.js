@@ -82,13 +82,22 @@ router.get('/favorites', async (req, res) => {
     const Favorite = new favoritesModel(null, null, user_id)
     const result = await Favorite.getFavorites();
     const object = result.rows;
+    const videoResponse = await Favorite.getVideoIdByUser();
+    const videoList = videoResponse;
+    console.log("Video list is :", videoList);
+    const detailsArray = await Promise.all(videoList.map(async videoDetails => {
+        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails.video_reference}&type=video&videoDefinition=high&key=AIzaSyCQOExEztPOzitZyl4xxyMHJnAZy-_mQMM&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
+        return details.items[0]
+    }))
+    console.log('Details array is :', detailsArray)
     res.render('template', {
         locals: {
             title: `${user_full_name}'s Favorites`,
             is_logged_in: req.session.is_logged_in,
             first_name: req.session.first_name,
             last_name: req.session.last_name,
-            object
+            object,
+            detailsArray
         },
         partials: {
             body: 'partials/favorites'

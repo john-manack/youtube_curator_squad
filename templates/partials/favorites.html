@@ -1,9 +1,10 @@
 <ul>
-    <div class="favorites-container">
-        ${object.map(data =>
+    <div class="favorites-container"
+        ${detailsArray.map(data =>
             `<li>
-                <a href="./watch/${data.video_reference}">
-                    <img  class="favorites-img" src="https://i.ytimg.com/vi/${data.video_reference}/default.jpg" alt="video thumbnail">
+                <a href="./watch/${data.id.videoId}">
+                    <img src="https://i.ytimg.com/vi/${data.id.videoId}/default.jpg" alt="video thumbnail">
+                    <p>${data.snippet.title}</p>
                     <hr/>
                 </a>
             </li>`).join('')}
