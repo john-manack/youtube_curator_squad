@@ -16,6 +16,21 @@
             <a href="/"><img src="/images/squadtube_logo.png" class="logo"></a>
         </div>
 
+        <div class="desktop-container">
+            <ul class="desktop-items">
+                <a class="navbar-item" href='/'>Home</a>
+                ${!!is_logged_in ? `
+                    <a class="navbar-item" href="/videos/favorites">Favorites</a>
+                    <a class="navbar-item" href='/users/logout'>Logout</a>
+                    <p class="navbar-item"><em><small>Logged in as</small><br> ${first_name} ${last_name}</em></p>
+                    ` : `
+                    <a class="navbar-item" href='/users/signup'>Register</a>
+                    <a class="navbar-item" href='/users/login'>Login</a>
+                    `
+                }
+            </ul>
+        </div>
+
         <div class="menu-wrap">
             <input type="checkbox" class="toggler">
             <div class="hamburger"><div></div></div>

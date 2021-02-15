@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  height: 100%;
 }
 
 *,
@@ -26,6 +25,8 @@ body {
 
 .logo {
   margin-top: -10px;
+  height: 100px;
+  width: 100px;
 }
 
 .menu-wrap {
@@ -37,17 +38,12 @@ body {
   margin-left: 40px;
 }
 
-.logo {
-  height: 100px;
-  width: 100px;
-}
-
 a {
-  color: #747474;
+  color: #92929c;
 }
 
 hr {
-  border: 1px solid #26263a;
+  border: 1px solid #303049;
 }
 
 .home-input {
@@ -55,7 +51,7 @@ hr {
   color: #333;
   border: none;
   width: 275px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .signup-input {
@@ -72,6 +68,15 @@ hr {
     width: 275px;
 }
 
+.tag-dropdown {
+    width: 275px;
+    color: #333;
+}
+
+.dropdown-div {
+    margin-top: 30px;
+}
+
 .button {
   background-color: #26263a;
   color: #fff;
@@ -79,6 +84,13 @@ hr {
   width: 275px;
   margin-top: 10px;
   text-align: center;
+  color: #a57927;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: rgb(241, 241, 241);
+    opacity: 0.9;
 }
 
 .form-container {
@@ -86,6 +98,42 @@ hr {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.desktop-container {
+    display: none;
+}
+
+.content-container {
+    margin: 0 5px 0px 5px;
+}
+
+.thumbnail-img {
+    height: 125px;
+    width: 175px;
+}
+
+.thumbnail-description {
+    font-size: 13px;
+}
+
+.content-list {
+    text-align: center;
+}
+
+.favorites-btn {
+    margin-top: -10px;
+    color: #a57927;
+}
+
+.tag-btn {
+    margin-top: 0;
+    color: #a57927;
+    margin-bottom: 10px;
+}
+
+.tag-titles {
+    color:#92929c;
 }
 
 .videoplayer-container {
@@ -97,4 +145,172 @@ hr {
 .videoplayer {
   width: 300px;
   height: 215px;
+}
+
+.favorites-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorites-img {
+    height: 120px;
+    width: 170px;
+}
+
+@media screen and (min-width: 370px) {
+    .favorites-item {
+
+    }
+
+    .home-input {
+        width: 300px;
+    }
+      
+    .signup-input {
+        width: 300px;
+    }
+      
+    .login-input {
+        width: 300px;
+    }
+      
+    .tag-dropdown {
+        width: 300px;
+    }
+
+    .button {
+        width: 300px;
+    }
+
+    .logo {
+        margin-left: 15px;
+        height: 105px;
+        width: 105px;
+    }
+
+    .menu-wrap {
+        margin-right: 20px;
+    }
+
+    .form-container {
+        margin-top: 15px;
+    }
+}
+
+@media screen and (min-width: 410px) {
+    .home-input {
+        width: 350px;
+    }
+      
+    .signup-input {
+        width: 350px;
+    }
+      
+    .login-input {
+        width: 350px;
+    }
+      
+    .tag-dropdown {
+        width: 350px;
+    }
+
+    .button {
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .home-input {
+        width: 500px;
+    }
+      
+    .signup-input {
+        width: 500px;
+    }
+      
+    .login-input {
+        width: 500px;
+    }
+      
+    .tag-dropdown {
+        width: 500px;
+    }
+
+    .button {
+        width: 500px;
+    }
+
+    .logo {
+        margin-left: 40px;
+        height: 120px;
+        width: 120px;
+    }
+
+    .menu-wrap {
+        margin-top: 30px;
+        margin-right: 40px;
+    }
+
+    .form-container {
+        margin-top: 50px;
+    }
+
+    .navbar-item {
+        font-size: 1.4rem;
+      }
+}
+
+@media screen and (min-width: 900px) {
+    .desktop-container {
+        display: unset;
+    }
+
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .desktop-items {
+        display: flex;
+        margin-right: 30px;
+    }
+
+    .navbar-item {
+        font-size: 1.2rem;
+    }
+
+    .home-input {
+        width: 600px;
+    }
+      
+    .signup-input {
+        width: 600px;
+    }
+      
+    .login-input {
+        width: 600px;
+    }
+      
+    .tag-dropdown {
+        width: 600px;
+    }
+
+    .button {
+        width: 600px;
+    }
+
+    .logo {
+        margin-left: 45px;
+        height: 150px;
+        width: 150px;
+    }
+
+    .menu-wrap {
+        margin-top: 30px;
+        margin-right: 40px;
+    }
+
+    .form-container {
+        margin-top: 50px;
+    }
 }

@@ -1,32 +1,37 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div class="videoplayer-container">
+
       <div class="videoplayer" id="player"></div>
+
         <form action="/videos/add" method="POST">
           <input type="hidden" name="videoId" value="${videoId}">
           <input type="hidden" name="user_id" value="${user_id}">
           ${!!is_logged_in ? `
-            <button type="submit" class="button is-primary">Add to Favorites</button>
+            <button type="submit" class="favorites-btn button is-ghost is-small">Add to Favorites</button>
             ` : `
           `}
         </form>
-        <form action="/videos/tag" method="POST">
+        <form action="/videos/tag" method="POST" class="form-container">
           <input type="hidden" name="videoId" value="${videoId}">
           ${!!is_logged_in ? `
-            <select name="tag_id">
-              ${tagKeyData.rows.map(tag => { return `
-                <option value="${tag.id}">${tag.tag_name}</option>
-              `})}
-            </select>
-            <button type="submit" class="button is-ghost is-small">Add Tag</button>
+            <div class="control select dropdown-div">
+              <select name="tag_id" class="select is-small tag-dropdown">
+                <option value="" disabled selected hidden>Select Tag</option>
+                ${tagKeyData.rows.map(tag => { return `
+                  <option value="${tag.id}">${tag.tag_name}</option>
+                `})}
+              </select>
+            </div>
+            <button type="submit" class="tag-btn button is-ghost is-small">Add Tag</button>
         ` : `
         `}
         </form>
     </div>
     <div>
-      <h4>Tags:</h4>
+      <h4><em>Tags:</em></h4>
         <p>
           ${videoTagData.rows.map(data => { return `
-            <span>#${data.tag_name}</span>
+            <span class="tag-titles">#${data.tag_name}</span>
           `}).join('')}
         </p>
     </div>
