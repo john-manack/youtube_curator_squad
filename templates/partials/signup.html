@@ -1,44 +1,28 @@
 <form action="/users/signup" method="POST" class="form clearfix">
+
     <div class="field">
-        <div class="control">
-            <label>
-                First Name: <input
-                type="text"
-                name="first_name"
-                placeholder="Enter First Name">
-            </label>
-        </div>
+        <input class="input" type="text" name="first_name" placeholder="First Name">
     </div>
     <div class="field">
-        <div class="control">
-            <label>
-                Last Name: <input
-                type="text"
-                name="last_name"
-                placeholder="Enter Last Name">
-            </label>
-        </div>
+        <input class="input" type="text" name="last_name" placeholder="Last Name">
     </div>
     <div class="field">
-        <div class="control">
-            <label>
-                Email: <input
-                type="email"
-                name="email"
-                placeholder="Enter Email">
-            </label>
-        </div>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="email" name="email" placeholder="Email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p>
     </div>
     <div class="field">
-        <div class="control">
-            <label>
-                Password: <input
-                type="password"
-                name="password"
-                placeholder="Enter Password">
-            </label>
-        </div>
+        <p class="control has-icons-left">
+          <input class="input" type="password" name="password" placeholder="Password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
     </div>
     
     <button type="submit" class="button is-primary">Sign Up</button>
+
 </form>

@@ -1,6 +1,6 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div videoplayer-container>
-      <div id="player"></div>
+    <div class="videoplayer-container">
+      <div class="videoplayer" id="player"></div>
         <form action="/videos/add" method="POST">
           <input type="hidden" name="videoId" value="${videoId}">
           <input type="hidden" name="user_id" value="${user_id}">
@@ -9,8 +9,29 @@
             ` : `
           `}
         </form>
+        <form action="/videos/tag" method="POST">
+          <input type="hidden" name="videoId" value="${videoId}">
+          ${!!is_logged_in ? `
+            <select name="tag_id">
+              ${tagKeyData.rows.map(tag => { return `
+                <option value="${tag.id}">${tag.tag_name}</option>
+              `})}
+            </select>
+            <button type="submit" class="button is-ghost is-small">Add Tag</button>
+        ` : `
+        `}
+        </form>
     </div>
-      
+    
+    <div>
+      <h4>Tags:</h4>
+        <p>
+          ${videoTagData.rows.map(data => { return `
+            <span>#${data.tag_name}</span>
+          `}).join('')}
+        </p>
+    </div>
+
     <script>
       const vidId = '${videoId}';
       console.log(vidId);
