@@ -1,8 +1,9 @@
 <ul>
-    ${object.map(data =>
+    ${detailsArray.map(data =>
         `<li>
-            <a href="./watch/${data.video_reference}">
-                <img src="https://i.ytimg.com/vi/${data.video_reference}/default.jpg" alt="video thumbnail">
+            <a href="./watch/${data.id.videoId}">
+                <img src="https://i.ytimg.com/vi/${data.id.videoId}/default.jpg" alt="video thumbnail">
+                <p>${data.snippet.title}</p>
                 <hr/>
             </a>
         </li>`).join('')}

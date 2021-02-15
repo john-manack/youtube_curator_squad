@@ -31,6 +31,17 @@ class FavoritesModel {
     async checkFavorites() {
         try {
             const query = `SELECT * FROM favorite_videos WHERE user_reference = ${this.user_reference} AND video_reference = ${this.video_reference};`;
+            const response = await db.one(query);
+            return response;
+        } catch(error) {
+            return error.message;
+        }
+    }
+    async getVideoIdByUser() {
+        try {
+            const query = `SELECT video_reference FROM favorite_videos WHERE user_reference = ${this.user_reference};`;
+            const response = await db.any(query);
+            return response;
         } catch(error) {
             return error.message;
         }
