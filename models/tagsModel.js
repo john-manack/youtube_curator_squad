@@ -48,6 +48,19 @@ class TagsModel {
             return error.message;
         }
     }
+    static async getTaggedVideos(tag_name) {
+        try {
+            const query = `
+            SELECT * FROM user_tags 
+                INNER JOIN tag_key
+                    ON user_tags.tag_key_reference = tag_key.id
+                WHERE tag_name = '${tag_name}';`;
+            const response = await db.result(query);
+            return response;
+        } catch(error) {
+            return error.message;
+        }
+    }
 }
 
 

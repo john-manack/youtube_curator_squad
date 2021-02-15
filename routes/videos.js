@@ -13,8 +13,6 @@ router.get('/q=:query', async (req, res) => {
     const apiVideos = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyCSM_aP_AujLtVzLcv3vXqgQBnCRFhUn6w&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
     ).then((response) => response.json());
-    console.log(apiVideos.items[0].id.videoId);
-
     res.render('template', {
         locals: {
             title: 'Video Results',
@@ -98,6 +96,7 @@ router.get('/favorites', async (req, res) => {
     })
 });
 
+// Post a new tag to a particular video
 router.post('/tag', async (req, res) => {
     const { videoId, tag_id } = req.body;
     const response = await tagsModel.addTagToVideo(videoId, tag_id)
@@ -108,6 +107,31 @@ router.post('/tag', async (req, res) => {
     else {
         res.sendStatus(500);
     };
+});
+
+// Post a tag to the req.params from the tag selector on the home page
+router.post('/searchtag', async (req, res) => {
+    const { tag_name } = await req.body;
+    console.log("search input is ", tag_name);
+    res.redirect(`/videos/t=${tag_name}`);
+});
+
+// Get a list of videos from the tag database
+router.get('/t=:tag_name', async (req, res) => {
+    const { tag_name } = req.params;
+    const tagged_videos = await tagsModel.getTaggedVideos(tag_name);
+    res.render('template', {
+        locals: {
+            title: 'Tag Results',
+            is_logged_in: req.session.is_logged_in,
+            first_name: req.session.first_name,
+            last_name: req.session.last_name,
+            tagged_videos
+        },
+        partials: {
+            body: 'partials/tags',
+        }
+    });
 });
 
 module.exports = router;
