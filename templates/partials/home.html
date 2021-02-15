@@ -9,3 +9,16 @@
         <button type="submit" class="button">Search</button>
     </div>
 </form>
+
+<form action="/videos/searchtag" method="POST" class="form-container">
+    <div class="control">
+        <select name="tag_name">
+            ${tagKeyData.rows.map(tag => { return `
+                <option value="${tag.tag_name}">${tag.tag_name}</option>
+            `})}
+        </select>
+    </div>
+    <div class="btn-container">
+        <button type="submit" class="button">Search</button>
+    </div>
+</form>
