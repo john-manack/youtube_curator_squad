@@ -1,23 +1,21 @@
-<form action="/users/login" method="POST">
+<form action="/users/login" method="POST" class="form-container">
     <div class="field">
-        <div class="control">
-            <label>
-                Email: <input
-                type="email"
-                name="email"
-                placeholder="Enter Email">
-            </label>
-        </div>
+        <p class="control has-icons-left has-icons-right">
+            <input class="login-input input" type="email" name="email" placeholder="Email">
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
     </div>
     <div class="field">
-        <div class="control">
-            <label>
-                Password: <input
-                type="password"
-                name="password"
-                placeholder="Enter Password">
-            </label>
-        </div>
+        <p class="control has-icons-left">
+            <input class="login-input input" type="password" name="password" placeholder="Password">
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
+        </p>
     </div>
-    <button type="submit" class="button is-primary">Login</button>
+    <div>
+        <button type="submit" class="button">Login</button>
+    </div>
 </form>

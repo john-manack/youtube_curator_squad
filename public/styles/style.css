@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -10,8 +11,8 @@ html {
 
 body {
   background-color: #000000;
-  height: 100vh;
   color: #fff;
+  height: 100vh;
 }
 
 .nav-container {
@@ -28,11 +29,12 @@ body {
 }
 
 .menu-wrap {
-  margin: 10px 10px 0px 0px;
+  margin: 15px 15px 0px 0px;
 }
 
 .navbar-item {
-  color: #66007a;
+  color: #8f838f;
+  margin-left: 40px;
 }
 
 .logo {
@@ -41,13 +43,49 @@ body {
 }
 
 a {
-    color: #747474;
+  color: #747474;
+}
+
+hr {
+  border: 1px solid #26263a;
+}
+
+.home-input {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  width: 275px;
+  margin-top: 30px;
+}
+
+.signup-input {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    width: 275px;
+}
+
+.login-input {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    width: 275px;
+}
+
+.button {
+  background-color: #26263a;
+  color: #fff;
+  border: none;
+  width: 275px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .videoplayer-container {
