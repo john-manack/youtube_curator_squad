@@ -20,6 +20,5 @@ CREATE TABLE tag_key (
 CREATE TABLE user_tags (
     id serial PRIMARY KEY,
     tag_key_reference integer REFERENCES tag_key(id),
-    video_reference varchar(2000),
-    user_reference integer REFERENCES user_info (id)
+    video_reference varchar(2000)
 );

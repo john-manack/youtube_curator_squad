@@ -28,5 +28,5 @@ VALUES
 ('pranks'),
 ('medicine');
 
-INSERT INTO user_tags (tag_key_reference, video_reference, user_reference)
-VALUES (1, 'qZHycHI3F1Q', 8);
+INSERT INTO user_tags (tag_key_reference, video_reference)
+VALUES (1, 'qZHycHI3F1Q');

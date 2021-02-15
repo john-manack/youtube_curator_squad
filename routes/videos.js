@@ -4,7 +4,8 @@ const express = require('express'),
     router = express.Router(),
     fetch = require('node-fetch'),
     users = require('../models/usersModel'),
-    favoritesModel = require('../models/favoritesModel');
+    favoritesModel = require('../models/favoritesModel'),
+    tagsModel = require('../models/tagsModel');
 
 // Get a list of videos from the API based on user search
 router.get('/q=:query', async (req, res) => {
@@ -37,9 +38,11 @@ router.post('/search', async (req, res) => {
 
 
 // Get a particular video from the API to watch
-router.get('/watch/:videoId', (req, res) => {
+router.get('/watch/:videoId', async (req, res) => {
     const { videoId } = req.params;
-    console.log(videoId);
+    const tagKeyData = await tagsModel.getTagList();
+    const videoTagData = await tagsModel.displayVideoTags(videoId);
+    console.log("Tag data is :", videoTagData)
     res.render('template', {
         locals: {
             title: 'Watch video',
@@ -47,7 +50,9 @@ router.get('/watch/:videoId', (req, res) => {
             is_logged_in: req.session.is_logged_in,
             user_id: req.session.user_id,
             first_name: req.session.first_name,
-            last_name: req.session.last_name
+            last_name: req.session.last_name,
+            tagKeyData,
+            videoTagData
         },
         partials: {
             body: 'partials/videoplayer',
@@ -91,6 +96,18 @@ router.get('/favorites', async (req, res) => {
             body: 'partials/favorites'
         },
     })
+});
+
+router.post('/tag', async (req, res) => {
+    const { videoId, tag_id } = req.body;
+    const response = await tagsModel.addTagToVideo(videoId, tag_id)
+    console.log(response); 
+    if (response.rowCount >= 1) {
+        res.redirect('back');
+    }
+    else {
+        res.sendStatus(500);
+    };
 });
 
 module.exports = router;
