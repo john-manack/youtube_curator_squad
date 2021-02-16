@@ -152,9 +152,7 @@ hr {
 }
 
 .favorites-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
 .favorites-img {
@@ -163,10 +161,6 @@ hr {
 }
 
 @media screen and (min-width: 370px) {
-    .favorites-item {
-
-    }
-
     .home-input {
         width: 300px;
     }
