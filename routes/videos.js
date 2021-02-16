@@ -11,7 +11,7 @@ const express = require('express'),
 router.get('/q=:query', async (req, res) => {
     const { query } = req.params; 
     const apiVideos = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyCQOExEztPOzitZyl4xxyMHJnAZy-_mQMM&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyBWnglWn4C7X9RPifbgdnKIvod1EoNGLEA&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
     ).then((response) => response.json());
     res.render('template', {
         locals: {

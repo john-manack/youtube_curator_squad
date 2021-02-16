@@ -11,7 +11,7 @@ html {
 body {
   background-color: #000000;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .nav-container {
@@ -122,7 +122,7 @@ hr {
 }
 
 .favorites-btn {
-    margin-top: -10px;
+    margin-top: -5px;
     color: #a57927;
 }
 
@@ -134,6 +134,10 @@ hr {
 
 .tag-titles {
     color:#92929c;
+}
+
+.tags-container {
+    margin-left: 20px;
 }
 
 .videoplayer-container {
@@ -259,6 +263,16 @@ hr {
     .navbar-item {
         font-size: 1.4rem;
       }
+
+    .favorites-img {
+        height:200px;
+        width: 270px;
+    }
+
+    .videoplayer {
+        width: 450px;
+        height: 300px;
+    }
 }
 
 @media screen and (min-width: 900px) {
