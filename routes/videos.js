@@ -11,7 +11,7 @@ const express = require('express'),
 router.get('/q=:query', async (req, res) => {
     const { query } = req.params; 
     const apiVideos = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyCQOExEztPOzitZyl4xxyMHJnAZy-_mQMM&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
     ).then((response) => response.json());
     res.render('template', {
         locals: {
@@ -86,7 +86,7 @@ router.get('/favorites', async (req, res) => {
     const videoList = videoResponse;
     console.log("Video list is :", videoList);
     const detailsArray = await Promise.all(videoList.map(async videoDetails => {
-        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails.video_reference}&type=video&videoDefinition=high&key=AIzaSyCQOExEztPOzitZyl4xxyMHJnAZy-_mQMM&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
+        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails.video_reference}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
         return details.items[0]
     }));
     console.log('Details array is :', detailsArray)
@@ -134,7 +134,7 @@ router.get('/t=:tag_name', async (req, res) => {
         return object.video_reference;
     });
     const detailsArray = await Promise.all(videoList.map(async videoDetails => {
-        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails}&type=video&videoDefinition=high&key=AIzaSyCQOExEztPOzitZyl4xxyMHJnAZy-_mQMM&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
+        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
         return details.items[0]
     }));
     console.log(detailsArray)

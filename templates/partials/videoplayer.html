@@ -31,7 +31,7 @@
       <h4><em>Tags:</em></h4>
         <p>
           ${videoTagData.rows.map(data => { return `
-            <span class="tag-titles">#${data.tag_name}</span>
+            <span class="tag-titles"><a href="/videos/t=${data.tag_name}">#${data.tag_name}</a></span>
           `}).join('')}
         </p>
     </div>
