@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>squadTube</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/styles/menu.css">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="/"><img src="/images/squadtube_logo.png" class="logo"></a>
+        </div>
+
+        <div class="desktop-container">
+            <ul class="desktop-items">
+                <a class="navbar-item" href='/'>Home</a>
+                ${!!is_logged_in ? `
+                    <a class="navbar-item" href="/videos/favorites">Favorites</a>
+                    <a class="navbar-item" href='/users/logout'>Logout</a>
+                    <p class="navbar-item"><em><small>Logged in as</small><br> ${first_name} ${last_name}</em></p>
+                    ` : `
+                    <a class="navbar-item" href='/users/signup'>Register</a>
+                    <a class="navbar-item" href='/users/login'>Login</a>
+                    `
+                }
+            </ul>
+        </div>
+
+        <div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <a class="navbar-item" href='/'>Home</a>
+                            ${!!is_logged_in ? `
+                                <a class="navbar-item" href="/videos/favorites">Favorites</a>
+                                <a class="navbar-item" href='/users/logout'>Logout</a>
+                                <p class="navbar-item"><em><small>Logged in as</small> ${first_name} ${last_name}</em></p>
+                                ` : `
+                                <a class="navbar-item" href='/users/signup'>Register</a>
+                                <a class="navbar-item" href='/users/login'>Login</a>
+                                `
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">${body}</main>
+</body>
+</html>

@@ -6,12 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "db:create": "createdb album_review",
-    "db:destroy": "dropdb album_review",
-    "db:init": "psql -f schema.sql album_review",
-    "db:seed": "psql -f seed.sql album_review",
-    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init && npm run db:seed"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +24,7 @@
     "express": "^4.17.1",
     "express-es6-template-engine": "^2.2.3",
     "express-session": "^1.17.1",
+    "node-fetch": "^2.6.1",
     "pg-promise": "^10.9.2",
     "slugify": "^1.4.6"
   }

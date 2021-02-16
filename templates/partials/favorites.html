@@ -1,0 +1,12 @@
+<ul>
+    <div class="favorites-container"
+        ${detailsArray.map(data =>
+            `<li>
+                <a href="./watch/${data.id.videoId}">
+                    <img src="https://i.ytimg.com/vi/${data.id.videoId}/default.jpg" alt="video thumbnail">
+                    <p>${data.snippet.title}</p>
+                    <hr/>
+                </a>
+            </li>`).join('')}
+    </div>
+</ul>

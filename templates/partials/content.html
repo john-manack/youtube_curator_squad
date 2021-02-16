@@ -1,0 +1,12 @@
+<div class="content-container">
+    <ul class="content-list">
+        ${apiVideos.items.map(item =>
+            `<li>
+                <a href="./watch/${item.id.videoId}">
+                    <img class="thumbnail-img" src="https://i.ytimg.com/vi/${item.id.videoId}/default.jpg" alt="video thumbnail">
+                    <p class="thumbnail-description">${item.snippet.title}</p>
+                <hr>
+                </a>
+            </li>`).join('')}
+    </ul>
+</div>
