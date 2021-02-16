@@ -11,7 +11,7 @@ const express = require('express'),
 router.get('/q=:query', async (req, res) => {
     const { query } = req.params; 
     const apiVideos = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyBWnglWn4C7X9RPifbgdnKIvod1EoNGLEA&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${query}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=18`
     ).then((response) => response.json());
     res.render('template', {
         locals: {
@@ -82,13 +82,22 @@ router.get('/favorites', async (req, res) => {
     const Favorite = new favoritesModel(null, null, user_id)
     const result = await Favorite.getFavorites();
     const object = result.rows;
+    const videoResponse = await Favorite.getVideoIdByUser();
+    const videoList = videoResponse;
+    console.log("Video list is :", videoList);
+    const detailsArray = await Promise.all(videoList.map(async videoDetails => {
+        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails.video_reference}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
+        return details.items[0]
+    }));
+    console.log('Details array is :', detailsArray)
     res.render('template', {
         locals: {
             title: `${user_full_name}'s Favorites`,
             is_logged_in: req.session.is_logged_in,
             first_name: req.session.first_name,
             last_name: req.session.last_name,
-            object
+            object,
+            detailsArray
         },
         partials: {
             body: 'partials/favorites'
@@ -120,13 +129,23 @@ router.post('/searchtag', async (req, res) => {
 router.get('/t=:tag_name', async (req, res) => {
     const { tag_name } = req.params;
     const tagged_videos = await tagsModel.getTaggedVideos(tag_name);
+    const videoObjects = tagged_videos.rows;
+    const videoList = videoObjects.map(object => {
+        return object.video_reference;
+    });
+    const detailsArray = await Promise.all(videoList.map(async videoDetails => {
+        const details = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=${videoDetails}&type=video&videoDefinition=high&key=AIzaSyCq_TCYu-Z2neuQtQN11csA-m_KZz83wH4&resultsPerPage=10&videoEmbeddable=true&maxResults=10`).then((response) => response.json());
+        return details.items[0]
+    }));
+    console.log(detailsArray)
     res.render('template', {
         locals: {
             title: 'Tag Results',
             is_logged_in: req.session.is_logged_in,
             first_name: req.session.first_name,
             last_name: req.session.last_name,
-            tagged_videos
+            tagged_videos,
+            detailsArray
         },
         partials: {
             body: 'partials/tags',
