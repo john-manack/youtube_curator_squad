@@ -1,14 +1,21 @@
 # YouTube Curator - Backend Project
 
-Allows user to search YouTube for videos on a topic, bookmark their favorite videos, tag videos based on the topic, search teh local databases based on the tags, and more!
+## Summary
 
-Technologies:
+Allows user to search YouTube for videos on a topic, bookmark their favorite videos, tag videos based on the topic, search the local databases based on the tags, and more! Allows user to register, login, and logout.
 
-* Node
+## Technologies
+
+* Node.js
 * Express
-* PostreSQL
+* PostgreSQL
+* HTML
+* CSS
+* Express ES6 Template Engine
+* Express session
+* Pg-promise
 
-Developers:
+## Developers
 
 * Patrick Collins
 * Kurtis Garcia
